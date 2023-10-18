@@ -1,0 +1,14 @@
+#Bitbucket pipelines to automate Terraform
+
+image: hashicorp/terraform:latest
+
+pipelines:
+    default:
+        - step:
+            name: 'Terraform Setup and run following commands'
+            script:
+                - cd deployments/dev
+                - terraform init 
+                - terraform validate
+                - terraform plan
+                - terraform apply -auto-approve
